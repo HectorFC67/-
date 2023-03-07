@@ -15,7 +15,7 @@ int main (void)
     free(clonedArray);
 
     char array2[] = "Estamos en C!";
-    char *array = (char*) malloc ((lenght(array1)+lenght(array2)+1)*sizeof(char));
+    char *array = (char*) malloc ((tamanyoCadenaChar(array1)+tamanyoCadenaChar(array2)+1)*sizeof(char));
 
     copyCadenaCharToChar (array, array1);
     printf("Cadena copiada: %s\n", array);

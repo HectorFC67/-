@@ -23,7 +23,7 @@ int tamanyoCadenaChar(char *array)
 }
 char* clonChar(char *array)
 {
-    int size = lenght(array);
+    int size = tamanyoCadenaChar(array);
 
     // char newArray[size+1]; si lo definimos asi en memoria estatica, al salir se pierde esta variable
     char* newArray = malloc (size*(sizeof(char)));
@@ -48,8 +48,9 @@ char mixCadenasChar(char *array1, char *array2)
 void copyCadenaCharToChar(char *array1, char *array2)
 {
     int i = 0;
-    while(array1[i] != '\0'){
+    while(array2[i] != '\0'){
         array1[i] = array2[i];
         i++;
     }
+    array1[i] = '\0';
 }
