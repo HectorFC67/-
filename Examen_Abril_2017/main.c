@@ -21,10 +21,10 @@ int main(void)
 	}
 
     GrupoPersonas grupoJovenes = recuperarJovenes(personas, 5);
-    printf("Hay %d personas menores de 30 anyos con una media de edad de %2f\n", grupoJovenes.numeroPersonas, grupoJovenes.mediaEdad);
+    printf("Hay %d personas menores de 30 anyos con una media de edad de %.2f\n", grupoJovenes.numeroPersonas, grupoJovenes.mediaEdad);
 
     Persona* yogurin = recuperarYogurin(personas, 5);
-    printf("El yogurín es %s con una edad de %d\n", yogurin->nombre, yogurin->edad);
+    printf("El yogurin es %s con una edad de %d\n", yogurin->nombre, yogurin->edad);
 
     return 0;
 }
