@@ -35,9 +35,9 @@ void crearInforme(GrupoPersonas gp, char* fichero)
 {
     FILE *archivo;
     archivo = fopen(fichero, "w");
-    fprintf(archivo, "CENSO DE JOVENES\n--------------------------------------\n");
+    fprintf(archivo, "CENSO DE JOVENES\n----------------------------\n");
     for (int i = 0; i < gp.numeroPersonas; i++){
         fprintf(archivo, "Nombre: %s, Edad: %i\n", gp.arrayPersonas[i].nombre, gp.arrayPersonas[i].edad);
     }
-    fprintf(archivo, "Media: %i\n", gp.mediaEdad);
+    fprintf(archivo, "Media: %.2f\n", gp.mediaEdad);
 }
