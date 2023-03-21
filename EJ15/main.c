@@ -1,10 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "string.h"
 
 #define MAX_LINE 10
+#define MAX_LENGTH 10
 
 typedef struct{
     int id;
+    char* nombre;
     float nota;
 }Asignatura;
 
@@ -23,16 +26,24 @@ char mostrarMenu()
 }
 
 void introducirAsig(Asignatura *asignatura) {
-    char c[MAX_LINE];
+    char *c;
     int id;
     float nota;
     printf("\nIntroducir asignatura:\n");
     printf("ID (introduce entero): ");
-    fflush(stdout);
     fgets(c, MAX_LINE, stdin);
     sscanf(c, "%i", &id);
+
+    printf("Nombre de la asignatura (introduce string con menos de 10 caracteres): ");
+    fgets(c, MAX_LINE, stdin);
+    char *str_aux = (char*) malloc(MAX_LENGTH*sizeof(char));
+    sscanf(c, "%s", str_aux);
+    int tamanyo = strlen(str_aux);
+    asignatura->nombre = (char*)malloc((tamanyo+1)*sizeof(char));
+    strcpy(asignatura->nombre, str_aux);
+    free(str_aux);
+
     printf("Nota (introduce float con dos decimales maximo): ");
-    fflush(stdout);
     fgets(c, MAX_LINE, stdin);
     sscanf(c, "%.2f", &nota);
     printf("Asignatura introducida con exito.\n");
@@ -44,7 +55,7 @@ void introducirAsig(Asignatura *asignatura) {
 void mostrarListado(Asignatura asignaturas[], int numeroAsig) {
     printf("\nListado de asignaturas:\n");
     for(int i = 0; i < numeroAsig; i++) {
-        printf("ID: %i Nota: %.2f\n", asignaturas[i].id, asignaturas[i].nota);
+        printf("ID: %i Nombre: %s Nota: %.2f\n", asignaturas[i].id, asignaturas[i].nombre, asignaturas[i].nota);
     }
 }
 
@@ -61,6 +72,14 @@ void salir()
 {
     printf("Saliendo...");
     exit(0);
+}
+
+void liberarMemoria(Asignatura *as, int numAsig)
+{
+    for(int i = 0; i < numAsig; i++)
+    {
+        free(as[i].nombre);
+    }
 }
 
 int main(void) {
@@ -94,7 +113,7 @@ int main(void) {
                 printf("Opción no válida.\n");
         }
     }
-
+    liberarMemoria(asignaturas, i);
     return 0;
 }
 
