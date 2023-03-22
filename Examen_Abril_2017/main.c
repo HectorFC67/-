@@ -12,12 +12,20 @@ int main(void)
     personas[3].nombre = "Idoia"; personas[3].edad = 31;
     personas[4].nombre = "Maite"; personas[4].edad = 24;
 
-    int cantidadMenores = cuantasPersonas(personas, 5, 15);
-    printf("Hay %d personas menores de 15 anyos.\n", cantidadMenores);
+    int edad;
+    printf("Menores de que edad quieres buscar: ");
+    scanf("%i", &edad);
 
-	for( int i=0; i<cantidadMenores; i++)
+    int cantidadMenores = cuantasPersonas(personas, 5, edad);
+    printf("Hay %d personas menores de %i anyos.\n", cantidadMenores, edad);
+
+	for( int i=0; i<5; i++)
 	{
-		imprimirPersona(personas[0]);
+        if(personas[i].edad<edad)
+        {
+            imprimirPersona(personas[i]);
+        }
+		
 	}
 
     GrupoPersonas grupoJovenes = recuperarJovenes(personas, 5);
@@ -28,6 +36,18 @@ int main(void)
 
     crearInforme(grupoJovenes, "informe.txt");
 
+    char letra = "";
+    printf("Segun que primera letra deseas buscar personas (introduzca en mayusculas): ");
+    fflush(stdout);
+    scanf("%c", &letra);
+    char** listaNombres = listadoNombres(personas, 5, "A");
+    int j = cuantosNombres;
+    for(int i = 0; i < j; i++)
+    {
+        printf("%s", listaNombres[i]);
+    }
+
+    free(listaNombres);
     return 0;
 }
 

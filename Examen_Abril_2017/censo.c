@@ -56,3 +56,32 @@ Persona* recuperarYogurin(Persona ap[], int tamanyo)
     }
     return p;
 }
+
+int cuantosNombres(Persona ap[], int tamanyo, char letra) {
+    int contador = 0;
+    for (int i = 0; i < tamanyo; i++) {
+        if (ap[i].nombre[0] == letra) {
+            contador++;
+        }
+    }
+    return contador;
+}
+
+char** listadoNombres(Persona ap[], int tamanyo, char letra){
+    int cant = cuantosNombres(ap, tamanyo, letra);
+    char** ptrBi = (char**)malloc(tamanyo*sizeof(char*));
+
+    int j = 0;
+    for(int i = 0; i < tamanyo; i++)
+    {
+        if(letra == ap[i].nombre[0])
+        {
+            ptrBi[j] = (char*)malloc(sizeof(char)*(strlen(ap[i].nombre)+1));
+            ptrBi[j] = ap[i].nombre;
+            j++;
+        }
+    }
+    
+    printf("Hay %i nombres que empiezan por la letra '%c':\n", cant, letra);
+    return ptrBi;
+}
