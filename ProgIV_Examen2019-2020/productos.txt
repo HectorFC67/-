@@ -1,0 +1,5 @@
+1Platanos (f)  12.00
+2Solomillo (f) 32.20
+3Chocolate (f) 25.50
+4Rodaballo (f) 35.40
+5Cereales (f)  10.50
