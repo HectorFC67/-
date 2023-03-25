@@ -15,13 +15,19 @@ void imprimirCompra (Compra c)
 
 void crearCarrito(Carrito* c, Producto** productos, int* cantidades, int tamanyo)
 {
-    float importeTotal;
+    float sumatorio =0;
+    float importeTotal = 0;
+    c->importe =0;
     c->compras=(Compra*) malloc(tamanyo*(sizeof(Compra)));
-    for(int i=0; i<5; i++)
+    for(int i=0; i<tamanyo; i++)
     {
         c->compras[i].producto = productos[i];
         c->compras[i].cant = cantidades[i];
-        importeTotal += productos[i]->precio * c->compras[i].cant;
+    }
+    for(int i=0; i<tamanyo; i++)
+    {
+        sumatorio = c->compras[i].cant * c->compras[i].producto[i].precio;
+        importeTotal += sumatorio;
     }
     c->importe = importeTotal;
 }
@@ -30,9 +36,9 @@ void imprimirCarrito(Carrito c)
 {
     printf("TICKET\n");
     printf("------\n");
-    for(int i = 0; i<5; i++)
+    for(int i = 0; i < 5; i++)
     {
-        printf("Ref.%i  %s \t %.2f x %i kg/ud\n", c.compras->producto->ref, c.compras->producto->nombre, c.compras->producto->precio, c.compras->cant);
+        printf("Ref.%i  %s \t %.2f x %i kg/ud\n", c.compras[i].producto->ref, c.compras[i].producto->nombre, c.compras[i].producto->precio, c.compras[i].cant);
     }
     printf("...................................................................\n");
     printf("TOTAL: %.2f euros", c.importe);
