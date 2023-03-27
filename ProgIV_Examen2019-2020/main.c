@@ -35,7 +35,8 @@ int main(void)
 	
 	Carrito* carritoModificado = &carrito;
 	modificarCarrito(carritoModificado, 3, 2);
-	imprimirCarrito(*carritoModificado);
+	imprimirCarrito(carritoModificado[0]);
+	devolverCarrito(carritoModificado[0]);
 
 	return 0;
 }
