@@ -41,10 +41,34 @@ void imprimirCarrito(Carrito c)
         printf("Ref.%i  %s \t %.2f x %i kg/ud\n", c.compras[i].producto->ref, c.compras[i].producto->nombre, c.compras[i].producto->precio, c.compras[i].cant);
     }
     printf("...................................................................\n");
-    printf("TOTAL: %.2f euros", c.importe);
+    printf("TOTAL: %.2f euros\n", c.importe);
 }
 
 void devolverCarrito(Carrito c)
 {
     free(c.compras);
+}
+
+void leerProductos(Producto* productos[], char* fichero)
+{
+    FILE* f;
+    char linea[40];
+    int i = 0;
+    Producto* producto;
+    f = fopen(fichero, "r");
+    if(f != NULL)
+    {
+        while (fgets(linea, sizeof(linea), f))
+        {
+            producto = (Producto*) malloc(sizeof(Producto));
+            sscanf(linea, "%d%s %f", &producto->ref, producto->nombre, producto->precio);
+            productos[i] = producto;
+            printf("%d %s %.2f\n", productos[i]->ref, productos[i]->nombre, productos[i]->precio);
+            i++;
+        }
+    }else
+    {
+        printf("No se ha encontrado el fichero");
+    }
+    fclose(f);
 }
