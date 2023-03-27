@@ -14,7 +14,7 @@ int main(void)
 	imprimirProducto(p1);
 
 	Producto* comprados[] = {&p1, &p2, &p3, &p4, &p5};
-	leerProductos(comprados, "productos.txt");
+	//leerProductos(comprados, "productos.txt");
 
 	Compra compra;
 	compra.producto = &p2;
@@ -32,6 +32,10 @@ int main(void)
 	crearCarrito(&carrito, comprados, cantidades, tamanyo);
 	imprimirCarrito(carrito);
 	devolverCarrito(carrito);
+	
+	Carrito* carritoModificado = &carrito;
+	modificarCarrito(carritoModificado, 3, 2);
+	imprimirCarrito(*carritoModificado);
 
 	return 0;
 }

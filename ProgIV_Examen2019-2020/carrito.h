@@ -20,6 +20,8 @@ void imprimirCompra (Compra c);
 void crearCarrito(Carrito* c, Producto** productos, int* cantidades, int tamanyo);
 void imprimirCarrito(Carrito c);
 void devolverCarrito(Carrito c);
+void  modificarCarrito(Carrito* carrito,  int  ref,  int  cant);
 void leerProductos(Producto* productos[], char* fichero);
+
 
 #endif

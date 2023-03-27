@@ -49,6 +49,21 @@ void devolverCarrito(Carrito c)
     free(c.compras);
 }
 
+void modificarCarrito(Carrito* carrito, int ref, int cant) {
+    for (int i = 0; i < 5; i++) {
+        if (carrito->compras[i].producto != NULL && carrito->compras[i].producto->ref == ref) {
+            carrito->compras[i].cant = cant;
+            float importeTotal = 0;
+            for (int j = 0; j < 5; j++) {
+                importeTotal += carrito->compras[j].cant * carrito->compras[j].producto->precio;
+            }
+            carrito->importe = importeTotal;
+            return;
+        }
+    }
+}
+
+
 void leerProductos(Producto* productos[], char* fichero)
 {
     FILE* f;
