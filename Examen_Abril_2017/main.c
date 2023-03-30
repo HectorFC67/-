@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define MAX_LINE 10
+
 int main(void)
 {
     Persona personas[5];
@@ -12,9 +14,11 @@ int main(void)
     personas[3].nombre = "Idoia"; personas[3].edad = 31;
     personas[4].nombre = "Maite"; personas[4].edad = 24;
 
+    char linea[MAX_LINE];
     int edad;
     printf("Menores de que edad quieres buscar: ");
-    scanf("%i", &edad);
+    fgets(linea, sizeof(linea), stdin);
+    sscanf(linea, "%i", &edad);
 
     int cantidadMenores = cuantasPersonas(personas, 5, edad);
     printf("Hay %d personas menores de %i anyos.\n", cantidadMenores, edad);
@@ -38,13 +42,13 @@ int main(void)
 
     char letra = "";
     printf("Segun que primera letra deseas buscar personas (introduzca en mayusculas): ");
-    fflush(stdout);
-    scanf("%c", &letra);
-    char** listaNombres = listadoNombres(personas, 5, "A");
-    int j = cuantosNombres;
+    fgets(linea, sizeof(linea), stdin);
+    sscanf(linea, "%c", &letra);
+    char** listaNombres = listadoNombres(personas, 5, letra);
+    int j = cuantosNombres(personas, 5, letra);
     for(int i = 0; i < j; i++)
     {
-        printf("%s", listaNombres[i]);
+        printf("%s\n", listaNombres[i]);
     }
 
     free(listaNombres);
