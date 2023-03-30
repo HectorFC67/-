@@ -28,6 +28,7 @@ int main(void)
 	char nums[MAX_LINE];
     int numeroVertices = 0;
     printf("Cuantos vertices quieres que tenga el Poligono: ");
+    fflush(stdout);
     fgets(nums,MAX_LINE, stdin);
     sscanf(nums, "%i", &numeroVertices);
     Punto *vertices = (Punto*) malloc(sizeof(Punto) * numeroVertices);
@@ -36,10 +37,12 @@ int main(void)
     {
         int x;
         int y;
-        printf("Coordenada X del Punnto %i: ", i+1);
+        printf("Coordenada X del Punto %i: ", i+1);
+        fflush(stdout);
         fgets(nums, MAX_LINE, stdin);
         sscanf(nums, "%i", &x);
-        printf("Coordenada Y del Punnto %i: ", i+1);
+        printf("Coordenada Y del Punto %i: ", i+1);
+        fflush(stdout);
         fgets(nums, MAX_LINE, stdin);
         sscanf(nums, "%i", &y);
         Punto punto = {x,y};
@@ -48,7 +51,8 @@ int main(void)
 
     Poligono poligono = {numeroVertices, vertices};
     imprimirPoligono(poligono);
-    perimetro(poligono);
+    float perimetroPoli = perimetro(poligono);
+    printf("Perimetro del poligono: %.2f", perimetroPoli);
 
     liberar(poligono);
 

@@ -7,7 +7,8 @@ void imprimirPoligono(Poligono poli)
 {
     for(int i = 0; i < poli.numVertices; i++)
     {
-        printf("Punto %i(%i, %i)", i+1, poli.vertices->x, poli.vertices->y);
+        printf("Punto %i", i+1);
+        imprimirPunto(poli.vertices[i]);
     }
 }
 
