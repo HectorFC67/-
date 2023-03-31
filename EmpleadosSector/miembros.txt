@@ -1,0 +1,7 @@
+Sector 1:
+ID	Nombre	Sueldo
+-----------------------
+1	Juan	2000.00
+2	Pedro	1500.00
+3	Maria	3000.00
+

@@ -1,0 +1,5 @@
+ID	Nombre	Dinero
+-----------------------
+1	Juan	100.50
+2	Pedro	50.20
+3	Maria	75.80
